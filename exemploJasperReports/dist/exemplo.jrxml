@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="exemplo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2bda3578-93b2-4b23-ba47-9e780948fcca">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DB-GP-Mysql"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="parametroTeste" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT "TESTE" as teste]]>
+	</queryString>
+	<field name="teste" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="teste"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="teste"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="54" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="01f18333-2c76-4e78-9a9e-027c8cd84709">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90e2d570-ae04-4756-8323-f0181623c607"/>
+				</reportElement>
+				<text><![CDATA[teste]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="220" height="20" uuid="5b1298f4-a76f-4856-8585-7fc74e4d4663">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90e2d570-ae04-4756-8323-f0181623c607"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{teste} + " " + $P{parametroTeste}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
