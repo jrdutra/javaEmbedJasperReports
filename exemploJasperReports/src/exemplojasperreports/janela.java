@@ -16,6 +16,9 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 
 import exemplojasperreports.ConnectionFactory;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import net.sf.jasperreports.swing.JRViewer;
 
 public class janela extends javax.swing.JFrame {
 
@@ -87,7 +90,46 @@ public class janela extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        Connection connection = null;
+        try {
 
+            String reportName = "exemplo";
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            connection = new ConnectionFactory().createConnection(); // opens a jdbc connection
+            
+            String parametro = jTextField1.getText();
+            
+            parameters.put("parametroTeste",parametro);
+            // compiles jrxml
+            JasperCompileManager.compileReportToFile(reportName + ".jrxml");
+            
+       
+            // fills compiled report with parameters and a connection
+            JasperPrint print = JasperFillManager.fillReport(reportName + ".jasper", parameters, connection);
+            
+            JFrame frame = new JFrame("Jasper report");
+
+            JRViewer viewer = new JRViewer(print);
+
+            frame.add(viewer);
+            frame.setSize(new Dimension(800, 600));
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            frame.setVisible(true);
+            
+
+        } catch (Exception e) {
+            throw new RuntimeException("It's not possible to generate the pdf report.", e);
+        } finally {
+            // it's your responsibility to close the connection, don't forget it!
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                }
+            }
+            
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -105,7 +147,7 @@ public class janela extends javax.swing.JFrame {
             // compiles jrxml
             JasperCompileManager.compileReportToFile(reportName + ".jrxml");
             
-            System.out.println("AQUI");
+ 
             // fills compiled report with parameters and a connection
             JasperPrint print = JasperFillManager.fillReport(reportName + ".jasper", parameters, connection);
             // exports report to pdf

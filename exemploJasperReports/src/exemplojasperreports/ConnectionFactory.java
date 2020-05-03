@@ -12,8 +12,8 @@ import java.sql.SQLException;
 public class ConnectionFactory {
      
     public static Connection createConnection() throws SQLException{
-        String url = "jdbc:mysql://localhost:3306/gestaoPessoal"; //Nome da base de dados
-        String user = "jrdutra"; //nome do usuário do MySQL
+        String url = "jdbc:mysql://localhost:3306/classicmodels?autoReconnect=true&useSSL=true"; //Nome da base de dados
+        String user = "root"; //nome do usuário do MySQL
         String password = "Jrcdutra1"; //senha do MySQL
          
         Connection conexao = null;
