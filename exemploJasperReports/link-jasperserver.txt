@@ -1,0 +1,1 @@
+http://localhost:81/jasperserver/rest_v2/reports/CLASSICMODELS/exemplo.html?j_username=user&j_password=Jrcdutra1&parametroTeste=85000
